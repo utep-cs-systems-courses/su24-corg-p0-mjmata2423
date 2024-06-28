@@ -14,3 +14,18 @@ void print_char_5x7(char c)
   }
   putchar('\n');
 }
+
+void print_char_3x8(char c)
+{
+  c -= 0x20;
+
+  for (char col = 0; col < 3; col++) {
+    for (char row = 0; row < 8; row++) {
+      unsigned short rowBits = font_3x8[c][col];
+      unsigned short colMask = 1 << (7-row);
+      putchar( (rowBits & colMask) ? '*' : ' ');
+    }
+    putchar('\n');
+  }
+  putchar('\n');
+}
